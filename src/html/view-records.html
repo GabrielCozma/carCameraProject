@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>RPi W Zero - camera AUTO</title>
+                <!--<meta http-equiv="refresh" content="15">-->
+                <style type="text/css">
+                        
+                        html, body {
+                            font-size: 18px;
+                            margin: 0;
+                            padding: 0;
+                            height: 100%;
+                            background-color: #f5f5f5;
+                            font-family: cursive;, sans-serif;
+                        }
+
+                        main {
+                            margin: 0 auto;
+                            display: flex;
+                            flex-direction: row;
+                            min-height: 100vh;
+                            height: -moz-fit-content;
+                            height: -webkit-fit-content;
+                            height: fit-content;
+                        }
+
+                        .content{
+                            display: flex;
+                            flex-direction: column;
+                            flex: 1;
+                        }
+
+                        /* finish layout style */
+
+                        .info_aside {
+                            flex: .5;
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .full_width_container_info {
+                            border-right: 3px solid black;
+                            border-bottom: 3px solid black;
+                            border-left: 3px solid black;
+                            border-bottom-right-radius: 40px;
+                            border-bottom-left-radius: 40px;
+
+                            padding-right: 10px;
+                            padding-bottom: 10px;
+                            padding-left: 10px;
+
+                            margin-left: 5px;
+                            margin-right: 5px;
+                            width: 100%;
+                        }
+
+                        .container_info {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+
+                            border-right: 3px solid black;
+                            border-bottom: 3px solid black;
+                            border-left: 3px solid black;
+                            border-bottom-right-radius: 40px;
+                            border-bottom-left-radius: 40px;
+
+                            padding-right: 10px;
+                            padding-bottom: 10px;
+                            padding-left: 10px;
+
+                            margin-bottom: 20px;
+
+                            height: 94%;
+                            background-color: orange;
+                        }
+
+                        .container_info #flex_container {
+                            display: flex;
+                            flex-direction: column; 
+                            flex: 0.9;
+                        }
+
+                        .status_circle {
+                            display: flex;
+                            flex: 0.1;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .row_info {
+                            display: flex;
+                            justify-content: center;
+
+                            margin-top: 20px;
+                            padding-right: 5px;
+                            padding-left: 5px;
+                        }
+
+                        .column_info {
+                            margin-top: 20px;
+                            padding-right: 20px;
+                            padding-left: 20px;
+
+                            font-size: 1.6rem;
+                            justify-content: center;
+                        }
+
+                        /* finish info aside */
+
+                        .div_links {
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                        }
+
+                        .container_links {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            height: 100%;
+                            width: 90%;
+
+                        }
+
+                        .link_box {
+                            display: flex;
+                            justify-content: center;
+
+                            padding-top: 15px;
+                            padding-bottom: 15px;
+                            border-right: 3px solid black;
+                            border-bottom: 3px solid black;
+                            border-left: 3px solid black;
+
+                            background-color: orange;
+                        }
+
+                        .link_box:last-child {
+                            border-bottom-right-radius: 40px;
+                            border-bottom-left-radius: 40px;
+                        }
+
+                        .link_box a {
+                            font-size: 1.7rem;
+                            color: black;
+                            text-decoration: none;
+                        }
+
+                        .link_box a:hover {
+                            font-size: 1.7rem;
+                            color: black;
+                            text-decoration: underline;
+                        }
+
+                        /* finish link buttons */
+
+                        .video_article {
+                            display: flex;
+                            flex: 1;
+                            flex-direction: row;
+                        }
+
+                        .video_content {
+                            display: flex;
+                            flex: .5;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+
+                            height: 100%;
+                        }
+
+                        #video_play {
+                            display: flex;
+
+                            height: 90%;
+                            width: 90%;
+                            border: 2px solid black;
+                        }
+
+                        .videos_table {
+                            display: flex;
+                            flex: .5;
+                            flex-direction: column;
+                            align-items: flex-end;
+                            vertical-align: center;
+
+                            margin-top: 5%;
+                        }
+
+                        .table {
+                            display: flex;
+                            justify-content: content;
+
+                            height: 80%;
+                            width: 80%;
+
+                            border-top: 2px solid black;
+                            border-bottom: 2px solid black;
+                            border-left: 2px solid black;
+                        }
+
+                        @media only screen and (max-width: 1200px) {
+                            
+                        .video_article {
+                            flex-direction: column;
+                        }
+
+                        .videos_table {
+                            flex: 1;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            margin-top: 0%;
+                        }
+
+                        .table {
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+
+                            height: 80%;
+                            width: 80%;
+
+                            border-top: 2px solid black;
+                            border-right: 2px solid black;
+                            border-bottom: 2px solid black;
+                            border-left: 2px solid black;
+                        }
+
+                        .container_info {
+                            padding-right: 5px;
+                            padding-left: 5px;
+                        }
+
+                        .column_info {
+                            padding-right: 5px;
+                            padding-left: 5px;
+                        }
+
+                    }
+
+                        /* finish video table and video player */
+
+                </style>
+        </head>
+        <body onload="init()">
+            <main>
+
+                <div class="content">
+
+                    <aside class="info_aside">
+
+                        <div class="full_width_container_info">
+                            <div class="container_info">
+
+                                <div id="flex_container">
+
+                                    <div class="row_info">
+
+                                        <div class="column_info">
+                                            Temperatura: _STEMP 
+                                        </div>
+                                        <div class="column_info">
+                                            Temperatura normala: _STEMP_NORMAL
+                                        </div>
+                                        <div class="column_info">
+                                            Temperatura maxima: _STEMP_HIGH
+                                        </div>
+                                    </div>
+
+                                    <div class="row_info">
+                                        <div class="column_info">
+                                            Timp camera activa: _UPTIME 
+                                        </div>
+                                        <div class="column_info">
+                                            Spatiu utilizat(%): _DISK_SPACE 
+                                        </div>
+                                    </div>
+
+                                    <div class="row_info">
+                                        <div class="column_info">
+                                            WiFi SSID: _WLAN_SSID 
+                                        </div>
+                                        <div class="column_info">
+                                            Adresa IP: _IP_ADDR
+                                        </div>
+                                    </div>
+
+                                    <div class="row_info">
+                                        <div class="column_info">
+                                            Inregistrare curenta: _CURR_REC
+                                        </div>
+                                        <div class="column_info">
+                                            N Loops: _N_LOOPS
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="status_circle">
+                                    <svg height="100" width="100">
+                                        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="_STATUS_COLOR" />
+                                    </svg> 
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </aside>
+                    
+                    <div class="div_links">
+
+                        <div class="container_links">
+
+                            <div class="link_box">
+                                <a href="/reboot">REBOOT</a>
+                            </div>
+
+                            <div class="link_box">
+                                <a href="/poweroff">POWER OFF</a>
+                            </div>
+
+                            <div class="link_box">
+                                _REC_CONTROL
+                            </div>
+
+                        </div>  
+
+                    </div>
+
+                    <article class="video_article">
+
+                        <div class="video_content">
+
+                            <video id="video_play" controls>
+                                <source id="video_src" src="" type="video/mp4">
+                            </video>
+
+                        </div>
+
+                        <aside class="videos_table">
+
+                            <div class="table">
+                                <table class="recording_list">
+                                    _REC_TABLE_ROWS
+                                </table>
+                            </div>
+
+                        </aside>
+
+                    </article>
+                    
+                </div>
+
+            </main>
+<script> 
+    var video;
+    var video_src;
+    var play_status;
+
+    function play_rec(rec_name) { 
+        video.pause(); 
+        video_src.src = rec_name; 
+        video.load(); 
+        video.play(); 
+        play_status.innerHTML = rec_name; 
+    }
+
+function init() {
+        video = document.getElementById("video_pb"); 
+        video_src = document.getElementById("video_src"); 
+        play_status = document.getElementById("pb_status");
+}
+
+                </script> 
+        </body>
+</html>
