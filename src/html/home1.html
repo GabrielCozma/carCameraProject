@@ -11,7 +11,7 @@
                             padding: 0;
                             height: 100%;
                             background-color: #f5f5f5;
-                            font-family: cursive, sans-serif;
+                            font-family: cursive;, sans-serif;
                         }
 
                         main {
@@ -86,10 +86,6 @@
                             flex: 0.1;
                             justify-content: center;
                             align-items: center;
-                        }
-
-                        svg {
-                            fill: _STATUS_COLOR;
                         }
 
                         .row_info {
@@ -173,7 +169,6 @@
                             align-items: center;
 
                             height: 100%;
-                            max-height: 600px;
                         }
 
                         #video_play {
@@ -249,14 +244,6 @@
 
                     }
 
-                    table tbody {
-                            width: 100%;
-                    }
-                    
-                    table tbody tr {
-                        table-layout: fixed;
-                    }
-
                         /* finish video table and video player */
 
                 </style>
@@ -317,7 +304,7 @@
 
                                 <div class="status_circle">
                                     <svg height="100" width="100">
-                                        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" />
+                                        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="_STATUS_COLOR" />
                                     </svg> 
                                 </div>
 
@@ -359,10 +346,8 @@
                         <aside class="videos_table">
 
                             <div class="table">
-                                <table id="recording_list" style="display: block; border-collapse: collapse; overflow-y: scroll; height: 100%; width: 100%;">
-                                    <tbody>
-                                       _REC_TABLE_ROWS
-                                    </tbody>
+                                <table class="recording_list">
+                                    _REC_TABLE_ROWS
                                 </table>
                             </div>
 

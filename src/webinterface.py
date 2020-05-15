@@ -315,7 +315,7 @@ class WebInterfaceHandler(BaseHTTPRequestHandler):
         page = page.replace('_REC_CONTROL', rec_control)
 
         rec_table_rows = ''
-        serial_no = 0;
+        serial_no = 0
         rec_files = glob.glob(config.RECORDS_LOCATION + '/*' 
                         + config.RECORD_FORMAT_EXTENSION)
         rec_files.sort(key=os.path.getmtime, reverse=True)
